@@ -14,6 +14,7 @@ exec ros -Q -- $0 "$@"
 
 (defun main (&rest argv)
   (declare (ignorable argv))
+  (jupiter-candle:register-all-resources)
   (gamekit.distribution:deliver :jupiter-candle
                                 'jupiter-candle:jupiter-game))
 ;;; vim: set ft=lisp lisp:
