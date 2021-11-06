@@ -1,0 +1,19 @@
+#!/bin/sh
+#|-*- mode:lisp -*-|#
+#|
+exec ros -Q -- $0 "$@"
+|#
+(progn ;;init forms
+  (ros:ensure-asdf)
+  #+quicklisp(ql:quickload '(jupiter-candle
+                             trivial-gamekit/distribution) :silent t))
+
+(defpackage :ros.script.deploy.3845220271
+  (:use :cl))
+(in-package :ros.script.deploy.3845220271)
+
+(defun main (&rest argv)
+  (declare (ignorable argv))
+  (gamekit.distribution:deliver :jupiter-candle
+                                'jupiter-candle:jupiter-game))
+;;; vim: set ft=lisp lisp:

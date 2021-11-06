@@ -1,0 +1,15 @@
+name: Linux Build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: 40ants/setup-lisp@v2
+      - run: qlot exec ros -Q deploy.ros
+      - uses: actions/upload-artifact@v2
+        with:
+          name: jupiter-candle-linux64.zip
+          path: build/jupiter-candle.zip
